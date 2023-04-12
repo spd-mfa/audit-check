@@ -83,17 +83,8 @@ export async function run(actionInput: input.Input): Promise<void> {
         userAgent: USER_AGENT,
     });
     const advisories = report.vulnerabilities.list;
-    if (github.context.eventName == 'schedule') {
-        core.debug(
-            'Action was triggered on a schedule event, creating an Issues report',
-        );
-        await reporter.reportIssues(client, advisories, warnings);
-    } else {
-        core.debug(
-            `Action was triggered on a ${github.context.eventName} event, creating a Check report`,
-        );
-        await reporter.reportCheck(client, advisories, warnings);
-    }
+    core.debug('Creating an Issues report');
+    await reporter.reportIssues(client, advisories, warnings);
 }
 
 async function main(): Promise<void> {

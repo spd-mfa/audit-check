@@ -2,13 +2,6 @@
  * Naive way to bundle the templates in order to skip any build/watch pre-processing steps.
  */
 
-import * as interfaces from './interfaces';
-
-export interface ReportWarning {
-    advisory?: interfaces.Advisory;
-    package: interfaces.Package;
-}
-
 export const REPORT = `
 {% if vulnerabilities.length > 0 %}
 ## Vulnerabilities
