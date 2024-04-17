@@ -1,0 +1,26 @@
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/" # .github/workflows
+    schedule:
+      interval: "daily"
+      time: "20:00"
+      timezone: "America/New_York"
+    open-pull-requests-limit: 10
+
+  - package-ecosystem: "npm" # yarn v1
+    directory: "/"
+    schedule:
+      interval: "daily"
+      time: "20:00"
+      timezone: "America/New_York"
+    open-pull-requests-limit: 10
+    ignore:
+      - dependency-name: "sass"
+        update-types: [ "version-update:semver-patch" ]
+      - dependency-name: "@types/jquery"
+        update-types: [ "version-update:semver-patch" ]
+      - dependency-name: "@types/node"
+        update-types: [ "version-update:semver-patch" ]
+      - dependency-name: "typescript"
+        update-types: [ "version-update:semver-patch" ]
